@@ -13,7 +13,7 @@ const Login = () => {
         e.preventDefault();
         const data ={
             user:user,
-            password:password
+            password:password,
         };
 
         // useEffect(()=>{

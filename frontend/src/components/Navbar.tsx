@@ -1,5 +1,35 @@
+import axios from 'axios';
+import {useNavigate } from 'react-router-dom'
+
 const Navbar = () => {
-    return (
+  const navigate = useNavigate();
+
+  const handleClick = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.log('No hay token en el almacenamiento');
+        return;
+      }
+
+      const response = await axios.post(
+        'http://localhost:8000/logout',
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      console.log(response.data.message);
+      localStorage.removeItem('token');
+      navigate('/'); // Redirige al login
+      window.location.reload();
+
+    } catch (error) {
+      console.error('Error en el logout:', error);
+    }
+  };
+  return (
       <>
         <div className="navbar navbar-light bg-light fixed-top">
           <div className="container-fluid">
@@ -71,8 +101,8 @@ const Navbar = () => {
                         <hr className="dropdown-divider" />
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#">
-                          Something else here
+                        <a className="dropdown-item" onClick={handleClick}>
+                          Cerrar Sesion
                         </a>
                       </li>
                     </ul>
