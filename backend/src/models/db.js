@@ -1,5 +1,5 @@
 // const mysql = require('mysql');
-// require('dotenv').config();
+require('dotenv').config();
 
 // const db = mysql.createConnection({
 //     host:process.env.HOST_DB || "localhost",
@@ -16,7 +16,7 @@ const { Pool } = require('pg');
 
 // Configuración de la conexión
 const db = new Pool({
-  user: process.env.USER_DB || "root",       // Usuario de PostgreSQL
+  user: process.env.USER_DB || "postgres",       // Usuario de PostgreSQL
   host:  process.env.HOST_DB || "localhost",        // Dirección del servidor PostgreSQL
   database: process.env.DATABASE_DB, // Nombre de la base de datos
   password: process.env.PASSWORD_DB, // Contraseña del usuario
@@ -24,8 +24,7 @@ const db = new Pool({
 });
 
 // Verificar la conexión
-db
-  .connect()
+db.connect()
   .then(client => {
     console.log("Conexión exitosa a la base de datos.");
     client.release(); // Libera el cliente después de probar la conexión

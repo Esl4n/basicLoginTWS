@@ -8,10 +8,13 @@ app.use(express.json())
 
 app.use(express.urlencoded({extended:true}));
 
+
 app.use(cors({
-    origin:[process.env.FRONT_URL],
+    origin:[process.env.FRONT_URL || "http://localhost:5173"],
     methods: ['GET','POST']
 }));
+
+app.options('*',cors())
 
 /** Rutas*/
 app.use('/', routes)
