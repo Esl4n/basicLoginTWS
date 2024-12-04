@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {useNavigate } from 'react-router-dom'
 
+const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -13,7 +15,7 @@ const Navbar = () => {
       }
 
       const response = await axios.post(
-        'http://localhost:8000/logout',
+        `${URL}/logout`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

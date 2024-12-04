@@ -8,6 +8,7 @@ import Estaciones from './pages/Estaciones';
 import Navbar from './components/Navbar';
 function App() {
 
+
 // Define la interfaz para el payload del JWT
 interface JwtPayload {
   sub?: string;
