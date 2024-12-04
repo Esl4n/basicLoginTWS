@@ -1,7 +1,9 @@
 import axios from 'axios';
 import {useNavigate } from 'react-router-dom'
 
-const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+// const URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+const URL = 'https://backendlogin-y5dk.onrender.com'
+
 
 const Navbar = () => {
   const navigate = useNavigate();
