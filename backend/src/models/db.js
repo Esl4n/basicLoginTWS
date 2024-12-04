@@ -16,10 +16,10 @@ const { Pool } = require('pg');
 
 // Configuración de la conexión
 const db = new Pool({
-  user: 'tu_usuario',       // Usuario de PostgreSQL
-  host: 'localhost',        // Dirección del servidor PostgreSQL
-  database: 'tu_base_datos', // Nombre de la base de datos
-  password: 'tu_contraseña', // Contraseña del usuario
+  user: process.env.USER_DB || "root",       // Usuario de PostgreSQL
+  host:  process.env.HOST_DB || "localhost",        // Dirección del servidor PostgreSQL
+  database: process.env.DATABASE_DB, // Nombre de la base de datos
+  password: process.env.PASSWORD_DB, // Contraseña del usuario
   port: 5432,               // Puerto de PostgreSQL (por defecto es 5432)
 });
 
